@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lady/features/auth/presentation/pages/sign_up_enter_phone_number.dart';
 import 'package:lady/features/auth/presentation/widgets/custom_born_date_input_text.dart';
 import 'package:lady/features/auth/presentation/widgets/custom_input_text.dart';
 import 'package:lady/features/auth/presentation/widgets/custom_gender_selector.dart';
@@ -23,8 +24,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
   void checkFormValid() {
     setState(() {
-      isButtonEnabled = nameTextController.text.length >= 5 &&
-          bornDateController.text.trim().isNotEmpty &&
+      isButtonEnabled = nameTextController.text.trim().length >= 5 &&
+          bornDateController.text.trim().length == 10 &&
           selectedGender != null &&
           selectedRegion != null &&
           selectedDistrict != null;
@@ -96,7 +97,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Column(
               children: [
                 CustomLoadingButton(
-                  title: "Kirish",
+                  title: "Ro'yxatdan o'tish",
                   onPressed: signUp,
                   isEnabled: isButtonEnabled,
                 ),
@@ -124,7 +125,14 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  void signUp() {}
+  void signUp() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const SignUpEnterPhoneNumber(),
+      ),
+    );
+  }
 
   void signUpPageClose() {
     Navigator.pop(context);

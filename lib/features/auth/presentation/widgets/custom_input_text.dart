@@ -19,6 +19,7 @@ class CustomInputText extends StatelessWidget {
         child: TextField(
           controller: controller,
           keyboardType: TextInputType.text,
+          textCapitalization: TextCapitalization.sentences,
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hintText,
